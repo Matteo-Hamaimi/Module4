@@ -1,0 +1,36 @@
+body {
+  background-color: rgb(201, 231, 245);
+  flex-wrap: wrap;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-family: "Roboto";
+  gap: 20px;
+}
+
+input {
+  border-radius: 5px;
+  font-size: 16px;
+  transition-duration: 0.3s;
+  margin: 2%;
+  padding: 1%;
+  width: max-content;
+}
+
+input:focus {
+  border: 2px solid rgb(56, 56, 56);
+}
+
+.buttonClass {
+  margin-top: 3%;
+  font-size: large;
+  border-radius: 5px;
+  background-color: white;
+  color: black;
+  border: 2px solid #555555;
+}
+
+.buttonClass:hover {
+  background-color: #555555;
+  color: white;
+}
