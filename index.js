@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const port = 1000;
+const port = 3000;
 const Service = require("./service.js");
 
 app.use(bodyParser.json());
@@ -18,10 +18,13 @@ app.get("/", (_, res) => {
 });
 
 app.get("/users", Service.getUsers);
-app.get("/users/Id_user =:Id_user", Service. getUsersByID);
-app.get("/users/username =:Chorename", Service.getUsername);
-app.get("/users/Firstname=:Firstname", Service.getFirstName);
-app.get("/users/Lastname=:Lastname", Service.getLastName);
+app.get("/users/id_user=:Id_User", Service. getUsersByID);
+app.get("/users/username=:username", Service.getUsername);
+app.get("/users/firstname=:firstname", Service.getFirstName);
+app.get("/users/lastname=:lastname", Service.getLastName);
+app.post("/users", Service.createUsers);
+app.put("/users/:Id_User", Service. updateUser);
+app.delete("/users/:Id_User", Service.deleteUser);
 
 
 app.get("/api/ping", (req, res) => {

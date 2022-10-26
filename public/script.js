@@ -31,22 +31,20 @@ const executeFunction = () => {
 };
 
 const getRead = () => {
-  var id = document.getElementById("Id_User").value;
+  var Id_User = document.getElementById("Id_User").value;
   var lastname = document.getElementById("Lastname").value;
   var firstname = document.getElementById("Firstname").value;
   var username = document.getElementById("username").value;
-  console.log(id);
-  if (id != "") {
-    console.log(id);
-    fetch("/users/Id_User=" + id)
+  if (Id_User != "") {
+    fetch("/users/id_user=" + Id_User)
       .then((data) => data.json())
       .then((data) => alert(JSON.stringify(data)));
   } else if (lastname != "") {
-    fetch("/users/Lastname=" + lastname)
+    fetch("/users/lastname=" + lastname)
       .then((data) => data.json())
       .then((data) => alert(JSON.stringify(data)));
   } else if (firstname != "") {
-    fetch("/users/Firstname=" + firstname)
+    fetch("/users/firstname=" + firstname)
       .then((data) => data.json())
       .then((data) => alert(JSON.stringify(data)));
   } else if (username != "") {
@@ -61,13 +59,15 @@ const getRead = () => {
 };
 
 const getCreation = () => {
+  var id = document.getElementById("Id_User").value;
   var lastname = document.getElementById("Lastname").value;
   var firstname = document.getElementById("Firstname").value;
   var username = document.getElementById("username").value;
 
   var payload = {
-    last_name: lastname,
-    first_name: firstname,
+    id: id,
+    lastname: lastname,
+    firstname: firstname,
     username: username,
   };
 
@@ -84,8 +84,8 @@ const getCreation = () => {
 };
 
 const getDelete = () => {
-  var id = document.getElementById("Id_User").value;
-  fetch("/users/" + id, {
+  var Id_User = document.getElementById("Id_User").value;
+  fetch("/users/" + Id_User, {
     method: "DELETE",
   })
     .then((res) => res.json())
@@ -93,21 +93,23 @@ const getDelete = () => {
 };
 
 const getUpdate = () => {
-  var id = document.getElementById("Id_User").value;
+  var Id_User = document.getElementById("Id_User").value;
   var lastname = document.getElementById("Lastname").value;
   var firstname = document.getElementById("Firstname").value;
   var username = document.getElementById("username").value;
 
   var payload = {
-    Id_User : id,
-    last_name: lastname,
-    first_name: firstname,
+    Id_User : Id_User,
+    lastname: lastname,
+    firstname: firstname,
     username: username,
   };
 
-  fetch("/users/" + id, {
+  
+  fetch("/users/"+Id_User, {
     method: "PUT",
     headers: {
+      Accept: "application/json",
       "Content-Type": "application/json",
     },
     body: JSON.stringify(payload),

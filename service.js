@@ -16,42 +16,43 @@ class service {
   }
 
   getUsers = (req, res) => {
+    console.log(req.body)
     this.pg("users").then((data) => {
       res.json(data);
     });
   };
 
   getUsersByID = (req, res) => {
-    const Id_user = parseInt(req.params.id);
+    const id_user = parseInt(req.params.Id_User);
     this.pg("users")
-      .where({ Id_users })
+      .where({ id_user })
       .then((data) => {
         res.json(data);
       });
   };
 
   getLastName = (req, res) => {
-    const last_name = req.params.lastname;
+    const lastname = req.params.lastname;
     this.pg("users")
-      .where({ last_name })
+      .where({ lastname })
       .then((data) => {
         res.json(data);
       });
   };
 
   getFirstName = (req, res) => {
-    const first_name = req.params.firstname;
+    const firstname = req.params.firstname;
     this.pg("users")
-      .where({ first_name })
+      .where({ firstname })
       .then((data) => {
         res.json(data);
       });
   };
 
   getUsername = (req, res) => {
-    const user_name = req.params.username;
+    const username = req.params.username;
     this.pg("users")
-      .where({ fuser_name })
+      .where({ username })
       .then((data) => {
         res.json(data);
       });
@@ -60,10 +61,9 @@ class service {
   
 
   createUsers = (req, res) => {
-    const { Id_users, username, Firstname, Lastname } =
-      req.body;
+    const { username, firstname, lastname } = req.body;
     this.pg("users")
-      .insert({ Id_users, username, Firstname, Lastname })
+      .insert({ username, firstname, lastname })
       .then((data) => {
         console.log(data);
         res.json(data);
@@ -71,21 +71,21 @@ class service {
   };
 
   updateUser = (req, res) => {
-    const Id_user = parseInt(req.params.id);
-    const { Lastname, Firstname, Username } =
+    const id_user = parseInt(req.params.Id_User);
+    const { lastname, firstname, username } =
       req.body;
     this.pg("users")
-      .where({ Id_user })
-      .update({ Lastname, Firstname, Username })
+      .where({ id_user })
+      .update({ lastname, firstname, username })
       .then((data) => {
         res.json(data);
       });
   };
 
   deleteUser = (req, res) => {
-    const Id_user = parseInt(req.params.id);
+    const id_user = parseInt(req.params.Id_User);
     this.pg("users")
-      .where({ Id_user })
+      .where({ id_user })
       .del()
       .then((data) => {
         res.json(data);

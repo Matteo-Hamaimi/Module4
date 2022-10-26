@@ -6,8 +6,8 @@ CREATE DATABASE ChoreCount;
 CREATE TABLE users (
     Id_User Serial PRIMARY KEY,
     username VARCHAR(50),
-    Firstname VARCHAR(50) NOT NULL,
-    Lastname VARCHAR(50) NOT NULL
+    Firstname VARCHAR(50) ,
+    Lastname VARCHAR(50) 
 );
 
 CREATE TABLE FlatSharing(
